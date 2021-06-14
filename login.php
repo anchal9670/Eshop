@@ -23,7 +23,7 @@ if (isset($_POST['sign_btn'])){
         
         if ($user['password']===$password) 
         {
-             
+             session_start();
             // Storing username in session variable
             
             $_SESSION['email'] = $email;
