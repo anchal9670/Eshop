@@ -1,17 +1,15 @@
 <?php
-
+include("connect.php");
 // Get the user id
-$Id = $_REQUEST['Id'];
+$email = $_REQUEST['email'];
 
-// Database connection
-$con = mysqli_connect("localhost", "root", "", "binary");
 
-if ($Id !== "") {
+if ($email !== "") {
 	
 	// Get corresponding first name and
 	// last name for that user id	
-	$query = mysqli_query($con, "SELECT Name,
-	email,mob,doj,Status FROM login WHERE Id='$Id'");
+	$query = mysqli_query($conn, "SELECT Name,
+	Id,mob,doj,Status FROM login WHERE email='$email'");
 
 	$row = mysqli_fetch_array($query);
 
@@ -19,7 +17,7 @@ if ($Id !== "") {
 	$Name = $row["Name"];
 
 	// Get the email
-	$email= $row["email"];
+	$Id= $row["Id"];
 	$mob= $row["mob"];
 	$doj= $row["doj"];
 	$status= $row["Status"];
@@ -28,7 +26,7 @@ if ($Id !== "") {
 }
 
 // Store it in a array
-$result = array("$Name", "$email","$mob","$doj","$status");
+$result = array("$Name", "$Id","$mob","$doj","$status");
 
 // Send in JSON encoded form
 $myJSON = json_encode($result);

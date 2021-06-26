@@ -280,7 +280,7 @@
         </div>
   <div class="col-1 col-s-1">
     <div class="card">
-      <img src="code/pp1.jpg" alt="Jane" style="width:100%">
+      <img src="img/pp.jpg" alt="Jane" style="width:100%">
       <div class="container">
         <h2>Anchal Kumar Chaudhary</h2>
         <p class="title">CEO &amp; Founder</p>
