@@ -1,5 +1,9 @@
+<?php include("nav.php"); 
+
+?>
+
 <?php
-include("nav.php");
+
 include("connect.php");
 
 error_reporting(0);
@@ -72,50 +76,94 @@ if (isset($_POST['sign_btn'])){
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+<link rel="stylesheet" href="index.css">
+<link rel="preconnect" href="https://fonts.gstatic.com">
+ 
+    <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+<!-- jQuery library -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+
+<!-- Popper JS -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.16.0/umd/popper.min.js"></script>
+
+<!-- Latest compiled JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+<link href="https://fonts.googleapis.com/css2?family=Sansita:ital@1&display=swap" rel="stylesheet">
+<style>
+
+.footer {
+    background-color: #39464a;
+    color: #ffffff;
+    text-align: center;
+    font-size: 12px;
+    padding: 15px;
+    }
+    /* For mobile phones: */
+    [class*="col-"] {
+    width: 90%;
+    }
+    @media only screen and (min-width: 0px) {
+    /* For tablets: */
     
-    <link rel="stylesheet" href="login1.css">
+    .container {width: 80%;}
+    
+    }
+    @media only screen and (min-width: 600px) {
+    /* For tablets: */
+    
+    .container {width: 45%;
+        }
+    
+    }
+    @media only screen and (min-width: 768pix) {
+    /* For desktop: */
+    
+    .container {width: 45%;
+       }
+  
+    
+    }
+    h2{
+        font-family: 'Sansita', sans-serif;
+    }
+</style>
 </head>
 <body>
    
-    <div class="row">
-        <div class="col-1 col-s-1 menu">
-       
-        </div>
-        <div class="col-2 col-s-2">
-            <h2>Login Form</h2>
+    <div class="row p-3">
+    
+        <div class="container border rounded bg-light ">
+        <div class="form p-2 ">     
+            <h2 class="text-center text-success">Login </h2>
             <form action="login.php" method="post">
-            <label for="Id">User Id</label>
-            <input type='text' name="Id"
-            id='Id' 
-        
-            onkeyup="GetDetail(this.value)" value="">
+            <!-- only for session the value -->
+            <input type='hidden' name="Id" id='Id' value="">
+            <input type="hidden" name="Name"id="Name" value="">
+            <input type="hidden" name="mob"id="mob" value="">
+            <input type="hidden" name="doj" id="doj" value="">
+            <input type="hidden" name="status" id="status" value="" >
 
-            
-            <input type="hidden" name="Name"
-                id="Name" value="">
 
+            <div class="form-group">
             <label for="email">E-mail</label>
             <input type="text" name="email"
-                id="email" value="">
-            
-            
-            <input type="hidden" name="mob"
-                id="mob" value="">
-            
-            <input type="hidden" name="doj"
-                id="doj" value="">
-            
-            <input type="hidden" name="status"
-                id="status" value="">
-
+                id="email" class="form-control " onkeyup="GetDetail(this.value)" value="">
+            </div>
+           
+            <div class="form-group">
             <label for="pass">Enter Password</label>
-            <input type="password" id="pass"  name="password" >
-            <button class="btn" name="sign_btn">Submit</button>
+            <input type="password" id="pass"  name="password" class="form-control " >
+            </div>
+            <div class="btn-group d-flex p-3">
+            <button class="btn btn-primary flex-fill" name="sign_btn" style="font-family: 'Sansita', sans-serif; font-size:25px;">Submit</button>
+            </div>
             </form>
         </div>
-        <div class="col-3 col-s-3">
-            
         </div>
+       
     </div>
     <div class="footer">
     <p>copyright: &copy; 2021-2024 Binary Tech Consultancy. All right are reserved.</p>
@@ -128,7 +176,7 @@ if (isset($_POST['sign_btn'])){
 		function GetDetail(str) {
 			if (str.length == 0) {
 				document.getElementById("Name").value = "";
-				document.getElementById("eamil").value = "";
+				document.getElementById("Id").value = "";
 				document.getElementById("mob").value = "";
 				document.getElementById("doj").value = "";
 
@@ -162,7 +210,7 @@ if (isset($_POST['sign_btn'])){
 						// Assign the value received to
 						// last name input field
 						document.getElementById(
-							"email").value = myObj[1];
+							"Id").value = myObj[1];
                         document.getElementById(
 							"mob").value = myObj[2];
                         document.getElementById(
@@ -173,7 +221,7 @@ if (isset($_POST['sign_btn'])){
 				};
 
 				// xhttp.open("GET", "filename", true);
-				xmlhttp.open("GET", "gfg.php?Id=" + str, true);
+				xmlhttp.open("GET", "gfg.php?email=" + str, true);
 				
 				// Sends the request to the server
 				xmlhttp.send();
